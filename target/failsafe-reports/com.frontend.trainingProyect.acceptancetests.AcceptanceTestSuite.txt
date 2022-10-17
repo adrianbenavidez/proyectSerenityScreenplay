@@ -1,9 +1,14 @@
 -------------------------------------------------------------------------------
 Test set: com.frontend.trainingProyect.acceptancetests.AcceptanceTestSuite
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.264 s <<< FAILURE! - in com.frontend.trainingProyect.acceptancetests.AcceptanceTestSuite
-com.frontend.trainingProyect.acceptancetests.AcceptanceTestSuite  Time elapsed: 0.263 s  <<< ERROR!
-cucumber.runtime.CucumberException: Failed to instantiate public cucumber.runtime.java.JavaBackend(cucumber.runtime.io.ResourceLoader,io.cucumber.stepexpression.TypeRegistry) with [cucumber.runtime.io.MultiLoader@34997338, io.cucumber.stepexpression.TypeRegistry@57eda880]
-Caused by: java.lang.reflect.InvocationTargetException
-Caused by: java.lang.ClassCastException: java.lang.String cannot be cast to java.net.URI
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 1, Time elapsed: 76.803 s <<< FAILURE! - in com.frontend.trainingProyect.acceptancetests.AcceptanceTestSuite
+US1_Login - Login con datos incompletos  Time elapsed: 11.88 s  <<< FAILURE!
+org.opentest4j.MultipleFailuresError: 
+Multiple Failures (6 failures)
+	io.cucumber.junit.UndefinedThrowable: The step "el usuario completa el campo email con su email" is undefined
+	io.cucumber.junit.UndefinedThrowable: The step "selecciona el boton para inciar sesión" is undefined
+	io.cucumber.junit.UndefinedThrowable: The step "el usuario visualiza el mensaje de error """ is undefined
+	io.cucumber.junit.UndefinedThrowable: The step "el usuario completa el campo contraseña con su contraseña" is undefined
+	io.cucumber.junit.UndefinedThrowable: The step "el usuario borra el contenido del campo email" is undefined
+	io.cucumber.junit.UndefinedThrowable: The step "el usuario visualiza el mensaje de error """ is undefined
 

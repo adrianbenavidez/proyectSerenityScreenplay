@@ -51,7 +51,7 @@ public class Loguearse implements Ability {
     }
 
     public enum tipoDeUsuarios{
-        AUTORIZADO("Incluit Testing","testing@incluit.com","testing"),
+        AUTORIZADO("testing incluit","testing@incluit.com","testing"),
         NO_AUTORIZADO("NO_AUTORIZADO","email@invalido.com","passwordInvalida");
 
         String nombre;

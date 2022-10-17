@@ -2,16 +2,19 @@ package com.frontend.trainingProyect.steps.us1_Login;
 
 import com.frontend.trainingProyect.screenplay.ScreenplaySetup;
 import com.frontend.trainingProyect.screenplay.global.abilities.Loguearse;
-import com.frontend.trainingProyect.screenplay.global.elements.Boton;
-import com.frontend.trainingProyect.screenplay.global.elements.Input;
-import com.frontend.trainingProyect.screenplay.global.elements.Menu;
+import com.frontend.trainingProyect.screenplay.global.elements.*;
+import com.frontend.trainingProyect.screenplay.global.questions.ElTexto;
 import com.frontend.trainingProyect.screenplay.global.tasks.HacerClick;
 import com.frontend.trainingProyect.screenplay.global.tasks.IngresarValor;
-
 import io.cucumber.java.Before;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Entonces;
 import net.serenitybdd.screenplay.Actor;
+
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
+import static net.serenitybdd.screenplay.questions.WebElementQuestion.the;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 
 public class LoginStepsDef {
@@ -41,6 +44,28 @@ public class LoginStepsDef {
 
     @Entonces("se encuentra en la pagina de login y visualiza los campos de Authenticacion, crear cuenta, e iniciar sesión")
     public void seEncuentraEnLaPaginaDeLoginYVisualizaLosCamposDeAuthenticacionCrearCuentaEIniciarSesion() {
+
+        // En caso de querer ver si es visible o no el elemento
+/*  elUsuario.should(
+               seeThat(the(Label.AUTHENTICATION), isVisible()),
+               seeThat(the(Label.ALREADY_REGISTERED), isVisible()),
+                seeThat(the(Label.AR_EMAIL_ADDRESS), isVisible()),
+               seeThat(the(Label.CA_EMAIL_ADDRESS), isVisible()),
+               seeThat(the(Label.PASSWORD), isVisible()),
+               seeThat(the(Label.CREATE_AN_ACCOUNT), isVisible()),
+               seeThat(the(Label.PLEASE_ENTER_YOUR_EMAIL), isVisible()),
+               seeThat(the(Hipervinculo.FORGOT_YOUR_PASSWORD), isVisible()));*/
+
+       elUsuario.should(
+                seeThat(ElTexto.de(Label.AUTHENTICATION), equalTo("AUTHENTICATION")),
+                seeThat(ElTexto.de(Label.ALREADY_REGISTERED), equalTo("ALREADY REGISTERED?")),
+                seeThat(ElTexto.de(Label.AR_EMAIL_ADDRESS), equalTo("Email address")),
+                seeThat(ElTexto.de(Label.CA_EMAIL_ADDRESS), equalTo("Email address")),
+                seeThat(ElTexto.de(Label.PASSWORD), equalTo("Password")),
+                seeThat(ElTexto.de(Label.CREATE_AN_ACCOUNT), equalTo("CREATE AN ACCOUNT")),
+                seeThat(ElTexto.de(Label.PLEASE_ENTER_YOUR_EMAIL), equalTo("Please enter your email address to create an account.")),
+                seeThat(ElTexto.de(Hipervinculo.FORGOT_YOUR_PASSWORD), equalTo("Forgot your password?"))
+                );
     }
 
     @Entonces("el usuario se loguea correctamente")
@@ -49,10 +74,12 @@ public class LoginStepsDef {
 
     @Entonces("visualiza la pantalla de inicio con su nombre")
     public void visualizaLaPantallaDeInicioConSuNombre() {
+        elUsuario.should(seeThat(ElTexto.de(Menu.NOMBRE), equalTo(Loguearse.como(elUsuario).getNombre())));
     }
 
     @Entonces("visualiza el botón Sign out")
     public void visualizaElBotonSignOut() {
+        elUsuario.should(seeThat(the(Menu.SIGN_OUT), isVisible()));
     }
 
 

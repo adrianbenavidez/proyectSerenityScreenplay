@@ -4,6 +4,7 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Open;
+import net.thucydides.core.annotations.Step;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
@@ -14,10 +15,11 @@ public class Navegar implements Task {
         this.page = page;
     }
 
-    public static Navegar hacia(Class<? extends PageObject> page){
+    public static Navegar hacia(Class<? extends PageObject> page) {
         return instrumented(Navegar.class, page);
     }
 
+    @Step("{0} navega hacia #page")
     @Override
     public <T extends Actor> void performAs(T theActor) {
 

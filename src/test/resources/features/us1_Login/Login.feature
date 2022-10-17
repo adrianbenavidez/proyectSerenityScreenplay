@@ -13,3 +13,27 @@
       Entonces el usuario se loguea correctamente
       Y visualiza la pantalla de inicio con su nombre
       Y visualiza el botón Sign out
+
+    @TC:2
+    Escenario: US1_Login - Login con datos incompletos
+      Dado que el usuario tiene la habilidad de loguearse como "Autorizado"
+      Y que el usuario se encuentra en la pantalla inicial
+      Cuando el usuario selecciona el menu iniciar sesión
+      Y el usuario completa el campo email con su email
+      Y selecciona el boton para inciar sesión
+      Entonces el usuario visualiza el mensaje de error ""
+      Cuando el usuario completa el campo contraseña con su contraseña
+      Y el usuario borra el contenido del campo email
+      Entonces el usuario visualiza el mensaje de error ""
+
+    @TC:3
+    Escenario: US1_Login - Login con datos invalidos
+      Dado que el usuario tiene la habilidad de loguearse como "No Autorizado"
+      Y que el usuario se encuentra en la pantalla inicial
+      Cuando el usuario selecciona el menu iniciar sesión
+      Y el usuario completa los campos email y contraseña
+      Y selecciona el botón para inciar sesión
+      Entonces el usuario visualiza el mensaje de error ""
+
+
+
