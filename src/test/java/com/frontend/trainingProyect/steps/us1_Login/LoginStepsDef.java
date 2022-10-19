@@ -4,11 +4,13 @@ import com.frontend.trainingProyect.screenplay.ScreenplaySetup;
 import com.frontend.trainingProyect.screenplay.global.abilities.Loguearse;
 import com.frontend.trainingProyect.screenplay.global.elements.*;
 import com.frontend.trainingProyect.screenplay.global.questions.ElTexto;
+import com.frontend.trainingProyect.screenplay.global.tasks.BorrarValor;
 import com.frontend.trainingProyect.screenplay.global.tasks.HacerClick;
 import com.frontend.trainingProyect.screenplay.global.tasks.IngresarValor;
 import io.cucumber.java.Before;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Entonces;
+import io.cucumber.java.es.Y;
 import net.serenitybdd.screenplay.Actor;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
@@ -37,9 +39,24 @@ public class LoginStepsDef {
         elUsuario.attemptsTo(IngresarValor.en(Loguearse.como(elUsuario).getContraseniaUsuario(), Input.AR_PASSWORD));
     }
 
-    @Cuando("selecciona el botón para inciar sesión")
-    public void seleccionaElBotonParaInciarSesion() {
+    @Y("selecciona el botón para iniciar sesión")
+    public void seleccionaElBotonParaIniciarSesion() {
         elUsuario.attemptsTo(HacerClick.en(Boton.SIGN_IN));
+    }
+
+    @Cuando("el usuario completa el campo email con su email")
+    public void elUsuarioCompletaElCampoEmailConSuEmail() {
+        elUsuario.attemptsTo(IngresarValor.en(Loguearse.como(elUsuario).getNombreUsuario(), Input.AR_EMAIL));
+    }
+
+    @Cuando("el usuario completa el campo contraseña con su contraseña")
+    public void elUsuarioCompletaElCampoContraseniaConSuContrasenia() {
+        elUsuario.attemptsTo(IngresarValor.en(Loguearse.como(elUsuario).getContraseniaUsuario(), Input.AR_PASSWORD));
+    }
+
+    @Y("el usuario borra el contenido del campo email")
+    public void elUsuarioBorraElContenidoDelCampoEmail() {
+        elUsuario.attemptsTo(BorrarValor.de(Input.AR_EMAIL));
     }
 
     @Entonces("se encuentra en la pagina de login y visualiza los campos de Authenticacion, crear cuenta, e iniciar sesión")
@@ -56,7 +73,7 @@ public class LoginStepsDef {
                seeThat(the(Label.PLEASE_ENTER_YOUR_EMAIL), isVisible()),
                seeThat(the(Hipervinculo.FORGOT_YOUR_PASSWORD), isVisible()));*/
 
-       elUsuario.should(
+        elUsuario.should(
                 seeThat(ElTexto.de(Label.AUTHENTICATION), equalTo("AUTHENTICATION")),
                 seeThat(ElTexto.de(Label.ALREADY_REGISTERED), equalTo("ALREADY REGISTERED?")),
                 seeThat(ElTexto.de(Label.AR_EMAIL_ADDRESS), equalTo("Email address")),
@@ -65,7 +82,7 @@ public class LoginStepsDef {
                 seeThat(ElTexto.de(Label.CREATE_AN_ACCOUNT), equalTo("CREATE AN ACCOUNT")),
                 seeThat(ElTexto.de(Label.PLEASE_ENTER_YOUR_EMAIL), equalTo("Please enter your email address to create an account.")),
                 seeThat(ElTexto.de(Hipervinculo.FORGOT_YOUR_PASSWORD), equalTo("Forgot your password?"))
-                );
+        );
     }
 
     @Entonces("el usuario se loguea correctamente")
@@ -82,5 +99,8 @@ public class LoginStepsDef {
         elUsuario.should(seeThat(the(Menu.SIGN_OUT), isVisible()));
     }
 
-
+    @Entonces("el usuario visualiza el mensaje de error en el login {string}")
+    public void elUsuarioVisualizaElMensajeDeErrorEnElLogin(String mensaje) {
+        elUsuario.should(seeThat(ElTexto.de(Label.ERROR_LOGIN), equalTo(mensaje)));
+    }
 }

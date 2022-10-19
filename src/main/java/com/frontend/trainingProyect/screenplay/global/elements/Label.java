@@ -13,5 +13,7 @@ public class Label {
     public static Target CA_EMAIL_ADDRESS = Target.the("EMAIL ADDRESS en la sección ALREADY REGISTERED").located(By.xpath("//body/div[@id='page']/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/form[1]/div[1]/div[2]/label[1]"));
     public static Target PASSWORD = Target.the("Título PASSWORD en la sección ALREADY REGISTERED").located(By.xpath("//label[contains(text(),'Password')]"));
 
+    public static Target ERROR_LOGIN = Target.the("Mensaje de error en el login").located(By.xpath("//*[@id='center_column']/div[1]/ol/li"));
+
 
 }

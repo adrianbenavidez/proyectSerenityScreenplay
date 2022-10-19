@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="US1_Login" skipped="2" tests="3" time="71.59" timestamp="2022-10-17 06:37:16"><testcase name="US1_Login - Login exitoso"/><testcase name="US1_Login - Login con datos incompletos"><skipped/></testcase><testcase name="US1_Login - Login con datos invalidos"><skipped/></testcase></testsuite>
